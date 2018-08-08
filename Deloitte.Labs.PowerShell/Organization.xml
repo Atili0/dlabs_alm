@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Organizations>
+	<Org Code="1" serverType="DEV" Url="1" connectionString = ""/>
+	<Org Code="2" serverType="PRE" Url="2" connectionString = ""/>
+	<Org Code="3" serverType="QA" Url="3" connectionString = ""/>
+	<Org Code="4" serverType="PRO" Url="4" connectionString = ""/>
+</Organizations>

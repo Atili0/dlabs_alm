@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<systemform>
+  <formid>{ef1f98a6-1939-4bb2-a220-be8d9284c9d3}</formid>
+  <IntroducedVersion>1.0.1.0</IntroducedVersion>
+  <FormPresentation>1</FormPresentation>
+  <FormActivationState>1</FormActivationState>
+  <form>
+    <tabs>
+      <tab verticallayout="true" id="{7991d759-8287-4a8c-a725-d3bfc9fc0598}" IsUserDefined="1">
+        <labels>
+          <label description="" languagecode="3082" />
+        </labels>
+        <columns>
+          <column width="100%">
+            <sections>
+              <section showlabel="false" showbar="false" IsUserDefined="0" id="{7d388243-e6a3-4ff1-b56e-fcfed15ac1f3}">
+                <labels>
+                  <label description="GENERAL" languagecode="3082" />
+                </labels>
+                <rows>
+                  <row>
+                    <cell id="{f9cda57e-27ab-4833-ae30-aa0905b1285a}">
+                      <labels>
+                        <label description="" languagecode="3082" />
+                      </labels>
+                      <control id="dx_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="dx_name" />
+                    </cell>
+                  </row>
+                  <row>
+                    <cell id="{cc64d122-0cc6-4e89-95b1-b5c95ebc2fea}">
+                      <labels>
+                        <label description="" languagecode="3082" />
+                      </labels>
+                      <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                    </cell>
+                  </row>
+                </rows>
+              </section>
+            </sections>
+          </column>
+        </columns>
+      </tab>
+    </tabs>
+  </form>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <LocalizedNames>
+    <LocalizedName description="Informació" languagecode="3082" />
+  </LocalizedNames>
+</systemform>

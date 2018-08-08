@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workflow WorkflowId="{54601b75-e3e0-41dc-8e31-1609c52007b3}" Name="CREACION DE LA ENTIDAD 1">
+  <XamlFileName>/Workflows/CREACIONDELAENTIDAD1-54601B75-E3E0-41DC-8E31-1609C52007B3.xaml</XamlFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
+  <Category>0</Category>
+  <Mode>0</Mode>
+  <Scope>1</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnCreate>1</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>1</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+  <StateCode>1</StateCode>
+  <StatusCode>2</StatusCode>
+  <RunAs>1</RunAs>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.0.1.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <PrimaryEntity>dx_entidad1</PrimaryEntity>
+  <LocalizedNames>
+    <LocalizedName languagecode="3082" description="CREACION DE LA ENTIDAD 1" />
+  </LocalizedNames>
+</Workflow>

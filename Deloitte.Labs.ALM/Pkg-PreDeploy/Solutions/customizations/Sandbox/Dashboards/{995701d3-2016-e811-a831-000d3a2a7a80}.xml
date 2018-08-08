@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <LocalizedNames>
+    <LocalizedName description="PANEL DE LA ENTIDAD 2" languagecode="3082" />
+  </LocalizedNames>
+  <FormId>{995701d3-2016-e811-a831-000d3a2a7a80}</FormId>
+  <IsCustomizable>1</IsCustomizable>
+  <IsDefault>0</IsDefault>
+  <FormXml>
+    <forms type="dashboard">
+      <form>
+        <tabs>
+          <tab showlabel="true" verticallayout="true" id="{83b883c3-3386-4a3e-8dff-30f4a1f95eb2}">
+            <labels>
+              <label description="Ficha" languagecode="3082" />
+            </labels>
+            <columns>
+              <column width="100%">
+                <sections>
+                  <section showlabel="false" showbar="false" columns="111" id="{7a9c8f78-061e-46ef-b92d-0ba588113481}">
+                    <labels>
+                      <label description="Sección" languagecode="3082" />
+                    </labels>
+                    <rows>
+                      <row>
+                        <cell colspan="1" rowspan="12" showlabel="false" id="{ac26ac68-2bbe-4edf-936c-cbbd24c6b7d6}">
+                          <labels>
+                            <label description="Component7ba8373" languagecode="3082" />
+                          </labels>
+                          <control id="IFRAME_Component7ba8373" classid="{FD2A7985-3187-444e-908D-6624B21F69C0}">
+                            <parameters>
+                              <Url>HTTP://WWW.bing.com</Url>
+                              <PassParameters>false</PassParameters>
+                              <Security>false</Security>
+                              <Scrolling>auto</Scrolling>
+                              <Border>true</Border>
+                              <ShowOnMobileClient>false</ShowOnMobileClient>
+                            </parameters>
+                          </control>
+                        </cell>
+                        <cell colspan="1" rowspan="12" showlabel="false" id="{60ed4283-5dcd-42ec-961e-34dd47f11907}">
+                          <labels>
+                            <label description="Componentbebf79a" languagecode="3082" />
+                          </labels>
+                          <control id="IFRAME_Componentbebf79a" classid="{FD2A7985-3187-444e-908D-6624B21F69C0}">
+                            <parameters>
+                              <Url>HTTP://WWW.bing.com</Url>
+                              <PassParameters>false</PassParameters>
+                              <Security>false</Security>
+                              <Scrolling>auto</Scrolling>
+                              <Border>true</Border>
+                              <ShowOnMobileClient>false</ShowOnMobileClient>
+                            </parameters>
+                          </control>
+                        </cell>
+                        <cell colspan="1" rowspan="12" showlabel="false" id="{78a51a1c-d0ba-42d3-bd51-308a3509d0d8}">
+                          <labels>
+                            <label description="Component8125a91" languagecode="3082" />
+                          </labels>
+                          <control id="IFRAME_Component8125a91" classid="{FD2A7985-3187-444e-908D-6624B21F69C0}">
+                            <parameters>
+                              <Url>HTTP://WWW.bing.com</Url>
+                              <PassParameters>false</PassParameters>
+                              <Security>false</Security>
+                              <Scrolling>auto</Scrolling>
+                              <Border>true</Border>
+                              <ShowOnMobileClient>false</ShowOnMobileClient>
+                            </parameters>
+                          </control>
+                        </cell>
+                      </row>
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                    </rows>
+                  </section>
+                </sections>
+              </column>
+            </columns>
+          </tab>
+          <tab showlabel="true" verticallayout="true" id="{d7428b9b-e7f7-4857-81a2-9617f7ad616c}">
+            <labels>
+              <label description="Ficha" languagecode="3082" />
+            </labels>
+            <columns>
+              <column width="100%">
+                <sections>
+                  <section showlabel="false" showbar="false" columns="111" id="{2a0f5ce0-0016-4df9-a338-348af73f94c5}">
+                    <labels>
+                      <label description="Sección" languagecode="3082" />
+                    </labels>
+                    <rows>
+                      <row>
+                        <cell colspan="3" rowspan="12" showlabel="false" id="{70b04539-353b-4520-bcbd-ef0acf06823f}">
+                          <labels>
+                            <label description="Componentcad5ee7" languagecode="3082" />
+                          </labels>
+                          <control id="IFRAME_Componentcad5ee7" classid="{FD2A7985-3187-444e-908D-6624B21F69C0}">
+                            <parameters>
+                              <Url>HTTP://WWW.GOOGLE.COM</Url>
+                              <PassParameters>false</PassParameters>
+                              <Security>false</Security>
+                              <Scrolling>auto</Scrolling>
+                              <Border>true</Border>
+                              <ShowOnMobileClient>false</ShowOnMobileClient>
+                            </parameters>
+                          </control>
+                        </cell>
+                      </row>
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                    </rows>
+                  </section>
+                </sections>
+              </column>
+            </columns>
+          </tab>
+        </tabs>
+      </form>
+    </forms>
+  </FormXml>
+  <IntroducedVersion>1.0.2.0</IntroducedVersion>
+  <IsTabletEnabled>0</IsTabletEnabled>
+</Dashboard>

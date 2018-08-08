@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityRelationships>
+  <EntityRelationship Name="business_unit_dx_entidad1" />
+  <EntityRelationship Name="business_unit_dx_entidad2" />
+  <EntityRelationship Name="lk_dx_entidad1_createdby" />
+  <EntityRelationship Name="lk_dx_entidad1_modifiedby" />
+  <EntityRelationship Name="lk_dx_entidad2_createdby" />
+  <EntityRelationship Name="lk_dx_entidad2_modifiedby" />
+  <EntityRelationship Name="owner_dx_entidad1" />
+  <EntityRelationship Name="owner_dx_entidad2" />
+  <EntityRelationship Name="team_dx_entidad1" />
+  <EntityRelationship Name="team_dx_entidad2" />
+  <EntityRelationship Name="user_dx_entidad1" />
+  <EntityRelationship Name="user_dx_entidad2" />
+</EntityRelationships>

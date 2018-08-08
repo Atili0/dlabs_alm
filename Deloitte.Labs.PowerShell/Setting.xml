@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deloitte>
+	<preimport>
+		<Data>
+			<Entities>
+				<Entity>account</Entity>
+				<Entity>contact</Entity>
+			</Entities>
+		</Data>
+		<Delete>
+			<Field entity="account">dx_prueba</Field>
+		</Delete>
+		<Solutions>
+			<Solution managed="true">FIX160212018</Solution>
+			<Solution managed="true">/>
+		</Solutions>
+	</preimport>
+	<import>
+		<Solutions></Solutions>
+		<Organizations></Organizations>
+		<Data></Data>
+	</import>
+</deloitte>

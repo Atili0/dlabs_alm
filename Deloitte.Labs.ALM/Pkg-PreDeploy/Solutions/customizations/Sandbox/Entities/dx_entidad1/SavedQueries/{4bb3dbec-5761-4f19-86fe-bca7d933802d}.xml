@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedquery>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>0</CanBeDeleted>
+  <isquickfindquery>0</isquickfindquery>
+  <isprivate>0</isprivate>
+  <isdefault>1</isdefault>
+  <savedqueryid>{4bb3dbec-5761-4f19-86fe-bca7d933802d}</savedqueryid>
+  <layoutxml>
+    <grid name="" jump="dx_name" select="1" icon="1" preview="1">
+      <row name="dx_entidad1" id="dx_entidad1id">
+        <cell name="dx_name" width="300" />
+        <cell name="createdon" width="125" />
+      </row>
+    </grid>
+  </layoutxml>
+  <querytype>2</querytype>
+  <fetchxml>
+    <fetch version="1.0" mapping="logical">
+      <entity name="dx_entidad1">
+        <attribute name="dx_entidad1id" />
+        <attribute name="dx_name" />
+        <attribute name="createdon" />
+        <order attribute="dx_name" descending="false" />
+        <filter type="and">
+          <condition attribute="statecode" operator="eq" value="0" />
+        </filter>
+      </entity>
+    </fetch>
+  </fetchxml>
+  <IntroducedVersion>1.0.1.0</IntroducedVersion>
+  <LocalizedNames>
+    <LocalizedName description="Vista asociada de ENTIDAD 1" languagecode="3082" />
+  </LocalizedNames>
+</savedquery>

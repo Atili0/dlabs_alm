@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<systemform>
+  <formid>{790d940d-0a3d-4a13-8889-2786d552fb7d}</formid>
+  <IntroducedVersion>1.0.2.0</IntroducedVersion>
+  <FormPresentation>1</FormPresentation>
+  <FormActivationState>1</FormActivationState>
+  <form>
+    <tabs>
+      <tab verticallayout="true" id="{4b43a6e0-ec8a-437f-be5f-1db86938d8e0}" IsUserDefined="1">
+        <labels>
+          <label description="General" languagecode="3082" />
+        </labels>
+        <columns>
+          <column width="100%">
+            <sections>
+              <section showlabel="false" showbar="false" IsUserDefined="0" id="{709e8d3d-2c55-4253-a59b-2edd3575a154}">
+                <labels>
+                  <label description="General" languagecode="3082" />
+                </labels>
+                <rows>
+                  <row>
+                    <cell id="{8033745b-f3ef-4301-bd34-cd8ab438a6cc}">
+                      <labels>
+                        <label description="" languagecode="3082" />
+                      </labels>
+                      <control id="dx_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="dx_name" />
+                    </cell>
+                  </row>
+                  <row>
+                    <cell id="{eac410f6-ba34-4f62-82c6-605ba3503e41}">
+                      <labels>
+                        <label description="" languagecode="3082" />
+                      </labels>
+                      <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                    </cell>
+                  </row>
+                </rows>
+              </section>
+            </sections>
+          </column>
+        </columns>
+      </tab>
+    </tabs>
+  </form>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <LocalizedNames>
+    <LocalizedName description="Informació" languagecode="3082" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description description="Un formulari per a aquesta entitat." languagecode="3082" />
+  </Descriptions>
+</systemform>

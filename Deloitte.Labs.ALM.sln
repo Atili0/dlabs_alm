@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deloitte.Labs.Data", "Deloi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deloitte.Labs.PowerShell", "Deloitte.Labs.PowerShell\Deloitte.Labs.PowerShell.csproj", "{70DF2EF5-CA8D-4FFA-A5F9-E7A6A09179D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deloitte.Labs.Test", "Deloitte.Labs.Test\Deloitte.Labs.Test.csproj", "{CAAF319C-B26C-421D-B868-31A7708E3FAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,32 +41,15 @@ Global
 		{70DF2EF5-CA8D-4FFA-A5F9-E7A6A09179D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70DF2EF5-CA8D-4FFA-A5F9-E7A6A09179D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70DF2EF5-CA8D-4FFA-A5F9-E7A6A09179D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAAF319C-B26C-421D-B868-31A7708E3FAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAAF319C-B26C-421D-B868-31A7708E3FAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAAF319C-B26C-421D-B868-31A7708E3FAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAAF319C-B26C-421D-B868-31A7708E3FAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EA758AAD-CB3E-4FAA-8809-8A79C1851A53}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://s2g.visualstudio.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Deloitte.Labs.Custom\\Deloitte.Labs.Custom.csproj
-		SccProjectName1 = Deloitte.Labs.Custom
-		SccLocalPath1 = Deloitte.Labs.Custom
-		SccProjectUniqueName2 = Deloitte.Labs.Object\\Deloitte.Labs.Object.csproj
-		SccProjectName2 = Deloitte.Labs.Object
-		SccLocalPath2 = Deloitte.Labs.Object
-		SccProjectUniqueName3 = Deloitte.Labs.PowerShell\\Deloitte.Labs.PowerShell.csproj
-		SccProjectName3 = Deloitte.Labs.PowerShell
-		SccLocalPath3 = Deloitte.Labs.PowerShell
-		SccProjectUniqueName4 = Deloitte.Labs.Core\\Deloitte.Labs.Data.csproj
-		SccProjectName4 = Deloitte.Labs.Core
-		SccLocalPath4 = Deloitte.Labs.Core
-		SccProjectUniqueName5 = Deloitte.Labs.Common\\Deloitte.Labs.Core.csproj
-		SccProjectName5 = Deloitte.Labs.Common
-		SccLocalPath5 = Deloitte.Labs.Common
 	EndGlobalSection
 EndGlobal

@@ -48,11 +48,13 @@ namespace Deloitte.Labs.Test
                     _program.CreatePickLIst(_entity);
                     break;
             }
+
+            ColorConsole.WriteLine("FINALIZADO".Red().OnYellow());
         }
 
         private void ReadExcel()
         {
-            var _path = @"C:\\CODE\\SVN\\dlabs_alm\\Deloitte.Labs.Test\\Configuration\\Account.xlsx";
+            var _path = @"C:\\CODE\\SVN\\dlabs_alm\\Deloitte.Labs.Test\\Configuration\\Product.xlsx";
             using (var stream = File.Open(_path, FileMode.Open, FileAccess.Read))
             {
                 using (var reader = ExcelReaderFactory.CreateReader(stream))
@@ -128,7 +130,7 @@ namespace Deloitte.Labs.Test
                     };
 
                     _crmsvc.OrganizationServiceProxy.Execute(createBankNameAttributeRequest);
-                    ColorConsole.WriteLine($"Create done { this._row[1].ToString() }".Yellow().OnGreen());
+                    ColorConsole.WriteLine($"Create done { this._row[1].ToString() }".Red().OnGreen());
                 }
                 catch (Exception ex)
                 {

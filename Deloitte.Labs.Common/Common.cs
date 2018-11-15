@@ -1,15 +1,20 @@
-﻿using System.IO.Compression;
-using System.Security.Cryptography;
-using System.Text;
-
-namespace Deloitte.Labs
+﻿namespace Deloitte.Labs
 {
+    using System.IO.Compression;
+    using System.Security.Cryptography;
+    using System.Text;
+
     using System;
     using System.IO;
-    using System.Management.Automation;
+    using System.Runtime.Serialization.Json;
+    using Microsoft.Xrm.Sdk;
 
     public class Common
-    {      
+    {
+        public enum ModeAsynPlugin {
+            Asyn = 1,
+            Sync = 0
+        }
 
         public static string CreateFolder(string Entity)
         {
@@ -94,6 +99,24 @@ namespace Deloitte.Labs
         public static void Decompress(ObjectExporter pEntity)
         {
             GZipStream instream = new GZipStream(File.OpenRead(pEntity.FullPath), CompressionMode.Decompress);
+        }
+    }
+
+    public static class Utils
+    {
+        public static string ToJson(this object obj, bool useSimpleDictionaryFormat = true)
+        {
+            var jsonSerializer = new DataContractJsonSerializer(obj.GetType());
+            using (var stream = new MemoryStream())
+            {
+                jsonSerializer.WriteObject(stream, obj);
+                return Encoding.UTF8.GetString(stream.ToArray());
+            }
+        }
+
+        public static OptionSetValue ToOptionSetValue(this int value)
+        {
+            return new OptionSetValue(value);
         }
     }
 }

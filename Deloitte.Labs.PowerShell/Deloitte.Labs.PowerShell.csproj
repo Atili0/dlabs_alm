@@ -48,6 +48,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Config\PConfig.json" />
     <None Include="Deloitte-PreDeploy.ps1" />
     <None Include="Deloitte_ALM.ps1" />
     <None Include="Get-S2G-Config.ps1" />

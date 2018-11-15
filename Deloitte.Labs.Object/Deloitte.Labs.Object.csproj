@@ -80,8 +80,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Addon.cs" />
     <Compile Include="Exporter.cs" />
     <Compile Include="Importer.cs" />
+    <Compile Include="PConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Super.cs" />
   </ItemGroup>

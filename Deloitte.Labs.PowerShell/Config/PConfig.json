@@ -1,0 +1,262 @@
+{
+
+  "D365_DLL": {
+    "name": "DLABS.RC.V9.PLUGIN",
+    "path": "C:\\CODE\\SVN\\DELOITTE\\ROYALCANIN\\RC_D365CE\\DLABS.RC.V9.PLUGIN\\bin\\Debug\\DLABS.RC.V9.PLUGIN.dll",
+    "Type": [
+      {
+        "TypeName": "POST_CHANSTATE_LEAD_CrearCliente",
+        "name": "POST_CHANSTATE_LEAD_CrearCliente",
+        "friendlyname": "POST_CHANSTATE_LEAD_CrearCliente_friendly",
+        "description": "POST_CHANSTATE_LEAD_CrearCliente_description",
+        "Step": [
+          {
+            "entityname": "lead",
+            //Filter attribute in the step. Separe attributes by comma
+            "filterattributes": "dlabs_ejecutarplugincalificar",
+            //Create - Update - Delet - etc
+            "eventname": "Update",
+            "name": "POST_CHANSTATE_LEAD_CrearCliente",
+            "description": "POST_CHANSTATE_LEAD_CrearCliente",
+            /* Run-time mode of execution, for example, synchronous or asynchronous.
+              0	Synchronous
+              1	Asynchronous
+            */
+            "mode": "0",
+            /* Indicates whether the asynchronous system job is automatically deleted on completion.
+              TRUE	
+              FALSE	
+            */
+            "deletestatus": "FALSE",
+            /*Json unsecure configuration*/
+            "unsecure_configuration": "",
+            /*Json secure configuration*/
+            "secure_configuration": {
+              "config": ""
+            },
+            /*
+              Comment for state
+              5	Initial Pre-operation (For internal use only)
+              10	Pre-validation
+              15	Internal Pre-operation Before External Plugins (For internal use only)
+              20	Pre-operation
+              25	Internal Pre-operation After External Plugins (For internal use only)
+              30	Main Operation (For internal use only)
+              35	Internal Post-operation Before External Plugins (For internal use only)
+              40	Post-operation
+              45	Internal Post-operation After External Plugins (For internal use only)
+              50	Post-operation (Deprecated)
+              55	Final Post-operation (For internal use only)
+            */
+            "stage": "40",
+            /*rank always will be 1*/
+            "rank": "1",
+            /*login user, in case to be D365 Only should be complete email login*/
+            "impersonatinguserid": "",
+            "sdkmessagefilterid": "",
+            //Deployment that the SDK message processing step should be executed on; server, client, or both.
+            //0	Server Only
+            //1 Microsoft Dynamics 365 Client for Outlook Only
+            //2 Both,
+            "supporteddeployment": "2"
+          }
+        ]
+      },
+      {
+        "TypeName": "POST_CRE_UPD_ACCOUNT_AsignarEquipo",
+        "name": "POST_CRE_UPD_ACCOUNT_AsignarEquipo",
+        "friendlyname": "POST_CRE_UPD_ACCOUNT_AsignarEquipo_friendname",
+        "description": "description",
+        "Step": [
+          {
+            "entityname": "account",
+            //Create - Update - Delet - etc
+            "eventname": "Create",
+            "name": "POST_CRE_UPD_ACCOUNT_AsignarEquipo",
+            "description": "POST_CRE_UPD_ACCOUNT_AsignarEquipo",
+            /* Run-time mode of execution, for example, synchronous or asynchronous.
+              0	Synchronous
+              1	Asynchronous
+            */
+            "mode": "0",
+            /* Indicates whether the asynchronous system job is automatically deleted on completion.
+              TRUE	
+              FALSE	
+            */
+            "deletestatus": "FALSE",
+            /*Json unsecure configuration*/
+            "unsecure_configuration": "",
+            /*Json secure configuration*/
+            "secure_configuration": {
+              "config": ""
+            },
+            /*
+              Comment for state
+              5	Initial Pre-operation (For internal use only)
+              10	Pre-validation
+              15	Internal Pre-operation Before External Plugins (For internal use only)
+              20	Pre-operation
+              25	Internal Pre-operation After External Plugins (For internal use only)
+              30	Main Operation (For internal use only)
+              35	Internal Post-operation Before External Plugins (For internal use only)
+              40	Post-operation
+              45	Internal Post-operation After External Plugins (For internal use only)
+              50	Post-operation (Deprecated)
+              55	Final Post-operation (For internal use only)
+            */
+            "stage": "40",
+            /*rank always will be 1*/
+            "rank": "1",
+            /*login user, in case to be D365 Only should be complete email login*/
+            "impersonatinguserid": "",
+            "sdkmessagefilterid": "",
+            //Deployment that the SDK message processing step should be executed on; server, client, or both.
+            //0	Server Only
+            //1 Microsoft Dynamics 365 Client for Outlook Only
+            //2 Both,
+            "supporteddeployment": "2",
+            "StepImage": [
+              {
+                "entityalias": "PostImage",
+                "name": "PostImage",
+                /*
+                Type of image requested.
+                0	PreImage
+                1	PostImage
+                2	Both
+                */
+                "imagetype": "1",
+                /*list attributes separated by comma*/
+                "attributes": "accountid,accountnumber,dlabs_distribuidorid,territoryid,dlabs_tipoclienteid,customertypecode"
+              }
+            ]
+          },
+          {
+            "entityname": "account",
+            //Create - Update - Delet - etc
+            "eventname": "Update",
+            "name": "POST_CHANSTATE_LEAD_CrearCliente",
+            "description": "POST_CHANSTATE_LEAD_CrearCliente",
+            /* Run-time mode of execution, for example, synchronous or asynchronous.
+              0	Synchronous
+              1	Asynchronous
+            */
+            "mode": "0",
+            /* Indicates whether the asynchronous system job is automatically deleted on completion.
+              TRUE	
+              FALSE	
+            */
+            "deletestatus": "FALSE",
+            /*Json unsecure configuration*/
+            "unsecure_configuration": "",
+            /*Json secure configuration*/
+            "secure_configuration": {
+              "config": ""
+            },
+            /*
+              Comment for state
+              5	Initial Pre-operation (For internal use only)
+              10	Pre-validation
+              15	Internal Pre-operation Before External Plugins (For internal use only)
+              20	Pre-operation
+              25	Internal Pre-operation After External Plugins (For internal use only)
+              30	Main Operation (For internal use only)
+              35	Internal Post-operation Before External Plugins (For internal use only)
+              40	Post-operation
+              45	Internal Post-operation After External Plugins (For internal use only)
+              50	Post-operation (Deprecated)
+              55	Final Post-operation (For internal use only)
+            */
+            "stage": "40",
+            /*rank always will be 1*/
+            "rank": "1",
+            /*login user, in case to be D365 Only should be complete email login*/
+            "impersonatinguserid": "",
+            "sdkmessagefilterid": "",
+            //Deployment that the SDK message processing step should be executed on; server, client, or both.
+            //0	Server Only
+            //1 Microsoft Dynamics 365 Client for Outlook Only
+            //2 Both,
+            "supporteddeployment": "2"
+          }
+        ]
+      },
+      {
+        "TypeName": "POST_UPD_LEAD_CREARCLIENTE",
+        "name": "POST_UPD_LEAD_CREARCLIENTE",
+        "friendlyname": "POST_UPD_LEAD_CREARCLIENTE_friendname",
+        "description": "description",
+        "Step": [
+          {
+            "name": "",
+            "description": "",
+            "plugintypeid": "",
+            "sdkmessageid": "",
+            "configuration": "",
+            "stage": "",
+            "rank": "",
+            "impersonatinguserid": "",
+            "sdkmessagefilterid": ""
+          }
+        ]
+      },
+      {
+        "TypeName": "PRE_UPD_OPP_IntervaloVisita",
+        "name": "PRE_UPD_OPP_IntervaloVisita",
+        "friendlyname": "PRE_UPD_OPP_IntervaloVisita_friendname",
+        "description": "description",
+        "Step": [
+          {
+            "name": "",
+            "description": "",
+            "plugintypeid": "",
+            "sdkmessageid": "",
+            "configuration": "",
+            "stage": "",
+            "rank": "",
+            "impersonatinguserid": "",
+            "sdkmessagefilterid": ""
+          }
+        ]
+      },
+      {
+        "TypeName": "PRE_UPD_OPP_PeriodoVisita",
+        "name": "PRE_UPD_OPP_PeriodoVisita",
+        "friendlyname": "PRE_UPD_OPP_PeriodoVisita_friendname",
+        "description": "description",
+        "Step": [
+          {
+            "name": "",
+            "description": "",
+            "plugintypeid": "",
+            "sdkmessageid": "",
+            "configuration": "",
+            "stage": "",
+            "rank": "",
+            "impersonatinguserid": "",
+            "sdkmessagefilterid": ""
+          }
+        ]
+      },
+      {
+        "TypeName": "PRE_UPD_OPP_PromedioVisitasDia",
+        "name": "PRE_UPD_OPP_PromedioVisitasDia",
+        "friendlyname": "PRE_UPD_OPP_PromedioVisitasDia_friendname",
+        "description": "description",
+        "Step": [
+          {
+            "name": "",
+            "description": "",
+            "plugintypeid": "",
+            "sdkmessageid": "",
+            "configuration": "",
+            "stage": "",
+            "rank": "",
+            "impersonatinguserid": "",
+            "sdkmessagefilterid": ""
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -88,6 +88,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Addon.cs" />
     <Compile Include="ExportData.cs" />
     <Compile Include="ExportDataByFetch.cs" />
     <Compile Include="ImportData.cs" />

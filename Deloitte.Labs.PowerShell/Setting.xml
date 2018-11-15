@@ -20,4 +20,7 @@
 		<Organizations></Organizations>
 		<Data></Data>
 	</import>
+  <plugin>
+    <config>C:\CODE\SVN\dlabs_alm\Deloitte.Labs.PowerShell\Config\PConfig.json</config>
+  </plugin>
 </deloitte>

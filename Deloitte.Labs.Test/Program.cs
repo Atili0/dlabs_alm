@@ -11,6 +11,9 @@ using Microsoft.Xrm.Sdk.Metadata;
 using Microsoft.Xrm.Tooling.Connector;
 using NLog;
 using System.Data;
+using System.Net;
+using Microsoft.Xrm.Sdk;
+using Newtonsoft.Json;
 
 namespace Deloitte.Labs.Test
 {
@@ -23,6 +26,7 @@ namespace Deloitte.Labs.Test
         OptionSetMetadata _optionMetadata;
         DataRow _row;
         AttributeRequiredLevelManagedProperty _requiredLevel;
+        IOrganizationService IOS;
 
         static void Main(string[] args)
         {
@@ -37,6 +41,8 @@ namespace Deloitte.Labs.Test
 
             ColorConsole.WriteLine("Deloitte Labs.".Yellow().OnBlue(), "Creación de campos.".Cyan().OnMagenta());
             Console.WriteLine("1- Crear picklist");
+            Console.WriteLine("2- Get List of Plugins");
+            Console.WriteLine("3- Create Plugins");
             var selec = Console.ReadLine();
             logger.Info($"Seleccion de datos { selec }");
             switch (selec)
@@ -46,6 +52,14 @@ namespace Deloitte.Labs.Test
                     var _entity = Console.ReadLine();
                     _program.ReadExcel();
                     _program.CreatePickLIst(_entity);
+                    break;
+                case "2":
+                    Console.WriteLine("Get all plugin".Yellow().OnBlue());
+                    _program.GetAllPluginsList(_program._crmsvc);
+                    break;
+                case "3":
+                    Console.WriteLine("Create assembly".Yellow().OnBlue());
+                    _program.CreateAssembly();
                     break;
             }
 
@@ -145,17 +159,29 @@ namespace Deloitte.Labs.Test
             logger.Info("Conectando al CRM");
             ColorConsole.WriteLine("Conectando al D365".Cyan().OnRed());
             var s1 = $@"Url=https://rciberiauat.crm4.dynamics.com/;
-   AuthType=Office365;
-   UserName=admin.iberia@rccrmeu.onmicrosoft.com;
-   Password=Deloitte.2018";
+            AuthType=Office365;
+            UserName=admin.iberia@rccrmeu.onmicrosoft.com;
+            Password=Deloitte.2018$";
 
 
             _crmsvc = new CrmServiceClient(s1);
 
-            if(_crmsvc.IsReady)
+            if (_crmsvc.IsReady)
                 ColorConsole.WriteLine("Conectado".Red().OnGreen());
             else
                 ColorConsole.WriteLine($"Falla en la conexión {_crmsvc.LastCrmError}".Yellow().OnRed());
+
+
+            //     _crmsvc = new CrmServiceClient(
+            //new NetworkCredential("SVCCRM21@rcad.net", "Mars1234", "rcad.net"),
+            //Microsoft.Xrm.Tooling.Connector.AuthenticationType.AD,
+            // "crm.extranet.royalcanin.org", "", "RCESPB2B", useSsl: true);
+
+
+            //IOS = _crmsvc.OrganizationWebProxyClient != null ? _crmsvc.OrganizationWebProxyClient : (IOrganizationService)_crmsvc.OrganizationServiceProxy;
+
+            //if (IOS == null)
+            //    throw new Exception("No es posible conectar con CRM");
         }
 
         private static void ChangeConsoleColor()
@@ -163,6 +189,97 @@ namespace Deloitte.Labs.Test
             Console.BackgroundColor = ConsoleColor.Blue;
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public List<PluginObject> GetAllPluginsList(CrmServiceClient configuration)
+        {
+            var lstPlugins = new List<PluginObject>();
+
+            using (var lServiceContext = new CrmServiceContext(configuration.OrganizationServiceProxy))
+            {
+                var arPlugin = from plugin in lServiceContext.PluginAssemblySet
+                               where plugin.Content != null
+                               where plugin.IsManaged == true
+                               select plugin;
+
+
+                lstPlugins.AddRange(arPlugin.Select(entity => new PluginObject
+                {
+                    Content = entity.Attributes["content"].ToString(),
+                    Name = entity.Attributes["name"].ToString(),
+                    PluginAssemblyId = new Guid(entity.Attributes["pluginassemblyid"].ToString()),
+                    Componentstate = GetComponentName(((OptionSetValue)entity.Attributes["componentstate"]).Value),
+                    Customizationlevel = entity.Attributes["customizationlevel"].ToString(),
+                    Introducedversion = entity.Attributes["introducedversion"].ToString(),
+                    Ismanaged = entity.Attributes["ismanaged"].ToString(),
+                    Isolationmode = GetInsolationName(((OptionSetValue)entity.Attributes["isolationmode"]).Value),
+                    Solutionid = new Guid(entity.Attributes["solutionid"].ToString()),
+                    Id = entity.Id
+                    
+                }));
+
+                //var _pluginStep = (from step in lServiceContext.SdkMessageProcessingStepSet
+                //                  select step).ToArray();
+
+                foreach (PluginObject item in lstPlugins)
+                {
+                   //var fffff = from i in lServiceContext.SdkMessageFilterSet
+                   //            where i.
+                }
+                //6b86bd92-e880-e011-bba4-00155da91e01
+            }
+            return lstPlugins;
+        }
+
+        public void CreateAssembly() {
+            PConfig _pconfig = JsonConvert.DeserializeObject<PConfig>(File.ReadAllText(@"C:\CODE\SVN\dlabs_alm\Deloitte.Labs.PowerShell\Config\PConfig.json"));
+
+            ObjectAddon _objectaddon = new ObjectAddon() {
+                ServiceClient = _crmsvc,
+                o_Config = _pconfig
+
+            };
+
+            IAddonCore _addconre = new AddonCore();
+            _addconre._addon = _objectaddon;
+            _addconre.LoadAssembly();
+            _addconre.CreateAssembly();
+            _addconre.CreatePluginType();
+
+        }
+
+        private static string GetComponentName(int value)
+        {
+            switch (value)
+            {
+                case 0:
+                    return "Published";
+                    break;
+                case 1:
+                    return "Unpublished";
+                    break;
+                case 2:
+                    return "Deleted";
+                    break;
+                case 3:
+                    return "DeleteUnpublished";
+                    break;
+            }
+            return string.Empty;
+        }
+
+        private static string GetInsolationName(int value)
+        {
+            switch (value)
+            {
+                case 1:
+                    return "None";
+                    break;
+                case 2:
+                    return "Sandbox";
+                    break;
+            }
+            return string.Empty;
         }
 
     }

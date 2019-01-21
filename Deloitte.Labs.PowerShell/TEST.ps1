@@ -18,11 +18,11 @@ Import-Module C:\Users\Atilio\Desktop\PowerShellModuleCSharp\PowerShellModuleCSh
 #Get-NetworkAdapter -Connection $conn
 
 
-$extractfolder = "C:\DELOITTE\CODE\Deloitte.Labs.ALM\Deloitte.Labs.ALM\Pkg-PreDeploy\Solutions\customizations\Sandbox"
+$extractfolder = "C:\CODE\SVN\dlabs_alm\Deloitte.Labs.PowerShell\PreDeploy\Solutions"
 $Command = "C:\SDK 365\SDK\Bin\SolutionPackager.exe"
 $Parms = "/action:Extract /zipfile:$($path) /folder:$($extractfolder)"
 
-$path = "C:\DELOITTE\CODE\Deloitte.Labs.ALM\Deloitte.Labs.ALM\Pkg-PreDeploy\Solutions\customizations\uno_managed.zip"
+$path = "C:\CODE\SVN\dlabs_alm\Deloitte.Labs.PowerShell\PreDeploy\Solutions\customizations\uno_managed.zip"
 
 
 $Prms = $Parms.Split()

@@ -55,6 +55,9 @@
     <None Include="Get-S2G-Connection.ps1" />
     <None Include="Get-S2G-LogConfig.ps1" />
     <None Include="Get-S2G-Solution.ps1" />
+    <Content Include="Get-S2G-Import-Solution.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="TEST.ps1" />
     <None Include="TEST2.ps1" />
   </ItemGroup>

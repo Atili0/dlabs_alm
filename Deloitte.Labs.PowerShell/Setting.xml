@@ -11,8 +11,10 @@
 			<Field entity="account">dx_prueba</Field>
 		</Delete>
 		<Solutions>
-			<Solution managed="true">FIX160212018</Solution>
-			<Solution managed="true">/>
+			<Solution managed="true">DY_FUSION_365_Patch_4e310e9b</Solution>
+            <Solution managed="true">DY_FUSION_365_Patch_195e3991</Solution>
+            <Solution managed="true">DY_FUSION_365_Patch_178c959a</Solution>
+            <Solution managed="true">DY_FUSION_365</Solution>
 		</Solutions>
 	</preimport>
 	<import>
@@ -23,4 +25,7 @@
   <plugin>
     <config>C:\CODE\SVN\dlabs_alm\Deloitte.Labs.PowerShell\Config\PConfig.json</config>
   </plugin>
+  <SolutionPath>
+    F:\PROJECT\ROYAL\DEPLOY\Customizations\Solutions
+  </SolutionPath>
 </deloitte>

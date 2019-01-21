@@ -123,11 +123,11 @@ function Set-DoAction() {
 
             If ($_.managed -eq "true") {
                 $ZipName = "$($_.InnerXml)_managed.zip"
-                Export-CrmSolution -conn $conn -SolutionName $_.InnerXml -Managed -SolutionFilePath "C:\Users\Atilio\Desktop\Config_S2G\Config_S2G\PreDeploy\Solutions\customizations" -SolutionZipFileName $ZipName
+                Export-CrmSolution -conn $conn -SolutionName $_.InnerXml -Managed -SolutionFilePath "F:\PROJECT\ROYAL\DEPLOY\Customizations\Solutions" -SolutionZipFileName $ZipName
             } 
             Else {
                 $ZipName = "$($_.InnerXml)_unmanaged.zip"
-                Export-CrmSolution -conn $conn -SolutionName $_.InnerXml -SolutionFilePath "C:\Users\Atilio\Desktop\Config_S2G\Config_S2G\PreDeploy\Solutions\customizations" -SolutionZipFileName $ZipName
+                Export-CrmSolution -conn $conn -SolutionName $_.InnerXml -SolutionFilePath "F:\PROJECT\ROYAL\DEPLOY\Customizations\Solutions" -SolutionZipFileName $ZipName
             }
 
             Write-Verbose -Message "Exported solution $($_.InnerXml)"

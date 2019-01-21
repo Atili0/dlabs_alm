@@ -68,7 +68,7 @@ namespace Deloitte.Labs.Test
 
         private void ReadExcel()
         {
-            var _path = @"C:\\CODE\\SVN\\dlabs_alm\\Deloitte.Labs.Test\\Configuration\\Product.xlsx";
+            var _path = @"C:\\CODE\\SVN\\dlabs_alm\\Deloitte.Labs.Test\\Configuration\\pPrescriber.xlsx";
             using (var stream = File.Open(_path, FileMode.Open, FileAccess.Read))
             {
                 using (var reader = ExcelReaderFactory.CreateReader(stream))

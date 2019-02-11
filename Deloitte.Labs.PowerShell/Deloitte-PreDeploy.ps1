@@ -121,13 +121,16 @@ function Set-DoAction() {
 
             Write-Progress -Activity 'Exporting' -Status "Processing $($_.InnerXml)" -PercentComplete $percent -CurrentOperation "$($percent)% complete"
 
-            If ($_.managed -eq "true") {
-                $ZipName = "$($_.InnerXml)_managed.zip"
-                Export-CrmSolution -conn $conn -SolutionName $_.InnerXml -Managed -SolutionFilePath "F:\PROJECT\ROYAL\DEPLOY\Customizations\Solutions" -SolutionZipFileName $ZipName
-            } 
-            Else {
-                $ZipName = "$($_.InnerXml)_unmanaged.zip"
-                Export-CrmSolution -conn $conn -SolutionName $_.InnerXml -SolutionFilePath "F:\PROJECT\ROYAL\DEPLOY\Customizations\Solutions" -SolutionZipFileName $ZipName
+            if (-not ([string]::IsNullOrEmpty($_.InnerXml)))
+            {
+                If ($_.managed -eq "true") {
+                    $ZipName = "$($_.InnerXml)_managed.zip"
+                    Export-CrmSolution -conn $conn -SolutionName $_.InnerXml -Managed -SolutionFilePath "F:\PROJECT\ROYAL\DEPLOY\Customizations\Solutions" -SolutionZipFileName $ZipName
+                } 
+                Else {
+                    $ZipName = "$($_.InnerXml)_unmanaged.zip"
+                    Export-CrmSolution -conn $conn -SolutionName $_.InnerXml -SolutionFilePath "F:\PROJECT\ROYAL\DEPLOY\Customizations\Solutions" -SolutionZipFileName $ZipName
+                }
             }
 
             Write-Verbose -Message "Exported solution $($_.InnerXml)"

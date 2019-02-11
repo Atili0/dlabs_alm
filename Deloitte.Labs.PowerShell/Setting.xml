@@ -11,10 +11,7 @@
 			<Field entity="account">dx_prueba</Field>
 		</Delete>
 		<Solutions>
-			<Solution managed="true">DY_FUSION_365_Patch_4e310e9b</Solution>
-            <Solution managed="true">DY_FUSION_365_Patch_195e3991</Solution>
-            <Solution managed="true">DY_FUSION_365_Patch_178c959a</Solution>
-            <Solution managed="true">DY_FUSION_365</Solution>
+			<Solution managed="true">DYN_FUSION_365_PRD_Patch_31ff68cb</Solution>
 		</Solutions>
 	</preimport>
 	<import>

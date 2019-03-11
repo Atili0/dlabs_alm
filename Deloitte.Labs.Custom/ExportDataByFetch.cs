@@ -1,10 +1,9 @@
-﻿namespace Deloitte.Labs
+﻿namespace Deloitte.Labs.Custom
 {
-    using System;
-    using System.Text;
-    using System.Management.Automation;
     using Microsoft.Xrm.Tooling.Connector;
-
+    using System;
+    using System.Management.Automation;
+    using System.Text;
 
     /// <summary>
     /// <param type="synopsis"></param>
@@ -21,42 +20,42 @@
         public CrmServiceClient Conn { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Alias("e")]
         [Parameter(Mandatory = true, HelpMessage = "Entity who will be extract records")]
         public string Entity { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Alias("p")]
-        [Parameter(HelpMessage = "Path where outout file will be save" )]
+        [Parameter(HelpMessage = "Path where outout file will be save")]
         public string Path { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Alias("f")]
         [Parameter(Mandatory = true, HelpMessage = "Fetch what will be used for extract data")]
         public string Fetch { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Alias("unc")]
         [Parameter(HelpMessage = "Causes the export data to be written as raw (uncompressed) text.")]
         public SwitchParameter Uncompressed { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Alias("enc")]
         [Parameter(HelpMessage = "If you want to encript the file")]
         public SwitchParameter Encrypt { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [ValidateLength(16, 20)]
         [Alias("k")]
@@ -68,7 +67,6 @@
             ErrorRecord _error;
             try
             {
-
                 byte[] bytes = Encoding.ASCII.GetBytes(this.KeyWord);
                 if (bytes.Length < 16)
                 {
@@ -78,7 +76,6 @@
                     WriteError(_error);
                     return;
                 }
-
 
                 WriteVerbose("Create object to process");
                 ObjectExporter _objectexporter = new ObjectExporter()
@@ -92,10 +89,9 @@
                 };
 
                 Export _export = new Export(_objectexporter);
-                if(this.Uncompressed)
+                if (this.Uncompressed)
                     _export.ExportTocompressed();
                 else _export.ExportToUncompressed();
-                
             }
             catch (System.Exception ex)
             {

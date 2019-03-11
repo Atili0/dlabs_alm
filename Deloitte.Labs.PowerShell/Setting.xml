@@ -11,7 +11,7 @@
 			<Field entity="account">dx_prueba</Field>
 		</Delete>
 		<Solutions>
-			<Solution managed="true">DYN_FUSION_365_PRD_Patch_31ff68cb</Solution>
+			<Solution managed="true">DYN_FUSION_365_PRD_1_2_Patch_1eaa87a4</Solution>
 		</Solutions>
 	</preimport>
 	<import>

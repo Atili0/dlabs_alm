@@ -1,4 +1,4 @@
-﻿namespace Deloitte.Labs
+﻿namespace Deloitte.Labs.Custom
 {
     using Microsoft.Xrm.Tooling.Connector;
     using System.Management.Automation;
@@ -21,7 +21,7 @@
         public string Path { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Alias("e")]
         [Parameter(Mandatory = true, HelpMessage = "Entity who will be extract records")]

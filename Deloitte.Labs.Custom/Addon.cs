@@ -14,14 +14,14 @@
         public CrmServiceClient Conn { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Alias("p")]
         [Parameter(HelpMessage = "Path where outout file will be save")]
         public string Path { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Alias("cp")]
         [Parameter(HelpMessage = "Key word for encrypt file")]
@@ -41,10 +41,7 @@
                 IAddonCore _addon = new AddonCore();
                 _addon._addon = _objectAddon;
 
-
                 //CREAR EL PROCESO PARA EL REGISTRO DEL PLUGIN EN POWERSHELL
-
-
             }
             catch (System.Exception ex)
             {

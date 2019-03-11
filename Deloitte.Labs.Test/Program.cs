@@ -161,7 +161,7 @@ namespace Deloitte.Labs.Test
             var s1 = $@"Url=https://rciberiauat.crm4.dynamics.com/;
             AuthType=Office365;
             UserName=admin.iberia@rccrmeu.onmicrosoft.com;
-            Password=Deloitte.2018$";
+            Password=Xaj74962";
 
 
             _crmsvc = new CrmServiceClient(s1);

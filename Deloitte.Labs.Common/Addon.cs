@@ -1,6 +1,7 @@
 ﻿namespace Deloitte.Labs
 {
     using Microsoft.Xrm.Sdk;
+    using Microsoft.Xrm.Sdk.Query;
     using System;
     using System.IO;
     using System.Linq;
@@ -12,11 +13,23 @@
         public ObjectAddon _addon { get; set; }
         public PluginAssembly _pluginAssembly { get; set; }
 
-        
+        public EntityCollection _ExistAssembly { get; set; }
+        public EntityCollection _ExistPlyginType { get; set; }
+        public EntityCollection _ExistProcessStep { get; set; }
+
+
 
         public void CreateAssembly()
         {
-            _addon.g_Assembly =  this._addon.ServiceClient.Create(this._pluginAssembly);
+            RetrievePluginAssemblyByName(this._addon.o_Config.D365_DLL.name);
+            if (this._ExistAssembly.Entities.Count > 0)
+            {
+                _addon.g_Assembly = this._ExistAssembly.Entities[0].Id;
+                this._pluginAssembly.Id = this._ExistAssembly.Entities[0].Id;
+                this._addon.ServiceClient.Update(this._pluginAssembly);
+            }
+            else
+                _addon.g_Assembly = this._addon.ServiceClient.Create(this._pluginAssembly);
         }
 
         public void GetMessageId()
@@ -41,6 +54,10 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pSecureConfig"></param>
         private void CreateSecureConfiguration(string pSecureConfig) {
             SdkMessageProcessingStepSecureConfig _secureStep = new SdkMessageProcessingStepSecureConfig() {
                 SdkMessageProcessingStepSecureConfigId = this._addon.g_MessageStep,
@@ -50,6 +67,46 @@
             this._addon.ServiceClient.Create(_secureStep);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="p_Item"></param>
+        private void RetrieveStep(Step p_Item)
+        {
+            try
+            {
+                QueryExpression queryExpression = new QueryExpression("sdkmessageprocessingstep")
+                {
+                    ColumnSet = new ColumnSet(true),
+                    Criteria = {
+                    Conditions = {
+                        new ConditionExpression("eventhandler", ConditionOperator.Equal,this._addon.g_PluginType),
+                        new ConditionExpression("name", ConditionOperator.Equal,p_Item.name),
+                        new ConditionExpression("sdkmessageid", ConditionOperator.Equal,this._addon.g_MessageId),
+                        new ConditionExpression("mode", ConditionOperator.Equal,int.Parse(p_Item.mode)),
+                        new ConditionExpression("stage", ConditionOperator.Equal,int.Parse(p_Item.stage)),
+                        new ConditionExpression("rank", ConditionOperator.Equal,1),
+                    }
+                }
+                };
+
+                //  if (xmlReader["PrimaryEntityName"] != null && xmlReader["PrimaryEntityName"] != "")
+                //      queryExpression.get_Criteria().AddCondition("sdkmessagefilterid", (ConditionOperator)0, new object[1]
+                //      {
+                //(object) messageFilterId
+                //      });
+
+                this._ExistProcessStep = this._addon.ServiceClient.RetrieveMultiple((QueryBase)queryExpression);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void CreateStep()
         {
             foreach (var item in this._addon.o_Type.Step)
@@ -78,7 +135,14 @@
                 if (item.mode.Equals((int)Common.ModeAsynPlugin.Asyn))
                     _messageStep.AsyncAutoDelete = Boolean.Parse(item.deletestatus);
 
-                this._addon.g_MessageStep = this._addon.ServiceClient.Create(_messageStep);
+                this.RetrieveStep(item);
+                if (this._ExistProcessStep.Entities.Count > 0) {
+                    _messageStep.Id = this._ExistProcessStep.Entities[0].Id;
+                    this._addon.g_MessageStep = this._ExistProcessStep.Entities[0].Id;
+                    this._addon.ServiceClient.Update(_messageStep);
+                }
+                else
+                    this._addon.g_MessageStep = this._addon.ServiceClient.Create(_messageStep);
 
                 if (!String.IsNullOrEmpty(item.secure_configuration.config))
                     CreateSecureConfiguration(item.secure_configuration.config);
@@ -91,22 +155,50 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void CreateStepImage()
         {
-            foreach (var item in this._addon.l_Stepimage)
+            try
             {
-                SdkMessageProcessingStepImage _StepImage = new SdkMessageProcessingStepImage()
+                foreach (var item in this._addon.l_Stepimage)
                 {
-                    EntityAlias = item.entityalias,
-                    Name = item.name,
-                    ImageType = new OptionSetValue(int.Parse(item.imagetype)),
-                    IsCustomizable = new BooleanManagedProperty(true),
-                    SdkMessageProcessingStepId = new EntityReference(SdkMessageProcessingStep.EntityLogicalName, this._addon.g_MessageStep),
-                    Attributes1 = item.attributes,
-                    MessagePropertyName = "POST_CRE_UPD_ACCOUNT_AsignarEquipo"
-                };
-                this._addon.ServiceClient.Create(_StepImage);
+                    Entity pluginSetpImageToBeUpdated = new Entity("sdkmessageprocessingstepimage");
+                    pluginSetpImageToBeUpdated.Attributes["name"] = item.entityalias;
+                    pluginSetpImageToBeUpdated.Attributes["attributes"] = item.attributes;
+                    pluginSetpImageToBeUpdated.Attributes["entityalias"] = item.entityalias;
+                    pluginSetpImageToBeUpdated.Attributes["messagepropertyname"] = "Id";
+                    pluginSetpImageToBeUpdated.Attributes["imagetype"] = new OptionSetValue(int.Parse(item.imagetype));
+                    pluginSetpImageToBeUpdated.Attributes["sdkmessageprocessingstepid"] = new EntityReference(SdkMessageProcessingStep.EntityLogicalName, this._addon.g_MessageStep);
+
+
+                    Guid _guid = Guid.NewGuid();
+                    pluginSetpImageToBeUpdated.Attributes["sdkmessageprocessingstepimageid"] = _guid;
+                    this._addon.ServiceClient.Create(pluginSetpImageToBeUpdated);
+                }
             }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        private void RetrievePluginType(string p_PluginTypeName)
+        {
+            QueryExpression queryExpression = new QueryExpression("plugintype")
+            {
+                ColumnSet = new ColumnSet(true),
+                Criteria = {
+                    Conditions =
+                    {
+                        new ConditionExpression("name", ConditionOperator.Equal, p_PluginTypeName)
+                    }
+                }
+            };
+
+            this._ExistPlyginType = this._addon.ServiceClient.RetrieveMultiple(queryExpression);
         }
 
         /// <summary>
@@ -126,7 +218,18 @@
                         Description = item.description
                     };
 
-                    this._addon.g_PluginType =  this._addon.ServiceClient.Create(_pluginType);
+                    this.RetrievePluginType(item.name);
+
+                    if (_ExistPlyginType.Entities.Count > 0)
+                    {
+                        _pluginType.Id = _ExistPlyginType.Entities[0].Id;
+                        this._addon.g_PluginType = _ExistPlyginType.Entities[0].Id;
+                        this._addon.ServiceClient.Update(_pluginType);
+                    }
+                    else {
+                        this._addon.g_PluginType = this._addon.ServiceClient.Create(_pluginType);
+                    }
+
                     this._addon.o_Type = item;
                     CreateStep();
                 }
@@ -171,6 +274,20 @@
                 File.ReadAllBytes(_addon.o_Config.D365_DLL.path));
 
             this._pluginAssembly =  pluginAssembly;
+        }
+
+        private void RetrievePluginAssemblyByName(string pluginAssemblyName)
+        {
+            QueryExpression queryExpression = new QueryExpression("pluginassembly") {
+                ColumnSet = new ColumnSet(true),
+                Criteria = {
+                    Conditions = {
+                        new ConditionExpression("name", ConditionOperator.Equal, pluginAssemblyName)
+                    }
+                }
+            };
+
+            this._ExistAssembly =  this._addon.ServiceClient.RetrieveMultiple(queryExpression);
         }
 
     }
